@@ -33,7 +33,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
             </button>
             {
                 isOpen && (
-                    <div className='absolute z-10 top-full mt-2  w-80 p-3 bg-white border border-gray-200 rounded-md shadow-sm'>
+                    <div className='absolute z-1000 top-full mt-2  w-80 p-3 bg-white border border-gray-200 rounded-md shadow-sm'>
 
                         {templates.map((template) => (
                             <div

@@ -1,5 +1,7 @@
 import { Outfit } from 'next/font/google';
 import './globals.css';
+import ReduxProvider from './ReduxProvider';
+import ToasterWrapper from './_components/ToasterWrapper';
 
 const outfit = Outfit({
 	subsets: ['latin'],
@@ -15,7 +17,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en' suppressHydrationWarning={true}>
-			<body className={outfit.className}>{children}</body>
+			<body className={outfit.className}>
+				<ReduxProvider>
+					<ToasterWrapper />
+					{children}
+				</ReduxProvider>
+			</body>
 		</html>
 	);
 }

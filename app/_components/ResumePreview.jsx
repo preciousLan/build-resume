@@ -36,47 +36,44 @@ const ResumePreview = ({ data, template, accentColor, classes = "" }) => {
   }
 
   /* ===== Print reset ===== */
-  @media print {
-    body {
-      margin: 0;
-      padding: 0;
-      background: white;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
-
-    /* Hide app UI */
-    nav,
-    header,
-    footer,
-    button {
-      display: none !important;
-    }
-
-    /* Resume wrapper */
-    #resume-preview {
-      width: 8.5in;
-      min-height: 11in;
-      margin: 0;
-      padding: 0.5in;
-      box-shadow: none;
-      border-radius: 0;
-      background: white;
-    }
-
-    /* Typography */
-    h1, h2, h3 {
-      page-break-after: avoid;
-    }
-
-    p, li {
-      page-break-inside: avoid;
-    }
-
-    section {
-      page-break-inside: avoid;
-    }
+@media print {
+  /* Hide EVERYTHING */
+  body * {
+    visibility: hidden;
   }
+
+  /* Show ONLY the resume */
+  #resume-preview,
+  #resume-preview * {
+    visibility: visible;
+  }
+
+  /* Position resume properly */
+  #resume-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.5in;
+    background: white;
+    box-shadow: none;
+    border: none;
+  }
+
+  /* Color accuracy */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Page setup */
+  @page {
+    size: letter;
+    margin: 0;
+  }
+}
+
 `}</style>
 
     </div>

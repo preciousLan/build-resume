@@ -3,12 +3,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../_features/authSlice'
 const NavBar = () => {
     const router = useRouter()
-    const user = {
-        name: "John Doe"
-    }
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state.auth);
+
     const logoutUser = () => {
+        dispatch(logout())
         router.push("/")
     }
 

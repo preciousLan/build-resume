@@ -1,12 +1,14 @@
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import Modal from './Modal';
 import CompaniesLogo from './CompaniesLogo';
 import Logo from "../../../public/logo.svg"
+import { useSelector } from 'react-redux';
 
 const Hero = () => {
-
+    const { user } = useSelector(state => state.auth)
 
 
     return (
@@ -26,11 +28,15 @@ const Hero = () => {
                     </div>
 
                     <div className="md:flex  gap-2 hidden">
-                        <Link href="/app?state=register" className=" px-6 py-2 bg-green-500 hover:bg-green-700 active:scale-95 transition-all rounded-full text-white">
+                        <Link href="/app?state=register" className=" px-6 py-2 bg-green-500 hover:bg-green-700 active:scale-95 transition-all rounded-full text-white" hidden={user}>
                             Get started
                         </Link>
-                        <Link href="/app?state=login" className="  px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900 " >
+                        <Link href="/app?state=login" className="  px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900 " hidden={user} >
                             Login
+                        </Link>
+
+                        <Link href="/app" className='hidden md:block px-8 py-2 bg-green-500 hover:bg-green-700 active:scale-95 transition-all rounded-full text-white ' hidden={!user}>
+                            Dashboard
                         </Link>
 
 

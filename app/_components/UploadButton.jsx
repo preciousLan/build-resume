@@ -2,8 +2,7 @@
 import { UploadCloud } from 'lucide-react';
 import React, { useState } from 'react'
 
-const UploadButton = () => {
-    const [resume, setResume] = useState(null);
+const UploadButton = ({resume, setResume}) => {
 
     return (
         <div>
